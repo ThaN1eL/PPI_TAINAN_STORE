@@ -21,9 +21,14 @@
 <!-- CDNJS Library -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+<!-- Alpine JS -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Alpine JS -->
+ <script src="js/alpine.js"></script>
 </head>
 <body>
-<header>
+<header x-data>
     <a href="#" class="navbar-logo">PPI Tainan<span> Store</span></a>
 
     <nav class="navbar">
@@ -36,6 +41,7 @@
     <div class="navbar-extra">
         <a href="#" id="shopping-cart-btn">
             <i data-feather="shopping-cart"></i>
+            <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity">10</span>
         </a>
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i> </a>
     </div>
@@ -94,6 +100,17 @@
 </section>
 <!-- Slider End -->
 
+<!-- ezCOZY Products start -->
+<section class="products" id="products" x-data="products">
+    <h2>Our <span>Products</span></h2>
+    
+    <h3>EzCOZY</h3>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis sunt cum unde repellendus saepe debitis!</p>
+</section>
+
+<!-- ezCOZY Products end -->
+
+
 <!-- About Section Start -->
 <!-- About Section End -->
     
@@ -129,6 +146,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <!-- JS -->
+<script src="js/swiper.js"></script>
 <script src="js/script.js"></script>
 
 </body>
