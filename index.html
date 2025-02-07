@@ -5,50 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PPI Tainan Store</title>
     <link rel="icon" type="image/png" href="img/icon1.png">
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <!-- FONTs library -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- FONTs -->
+<link rel="preconnect" href="c://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
 
-<!-- Feather library -->
+<!-- Feather icon -->
 <script src="https://unpkg.com/feather-icons"></script>
 
-<!-- Custom CSS  -->
-<link rel="stylesheet" href="css/style.css">
+<!-- Swiper CSS-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-<!-- CDNJS Library -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- MY style -->
+    <link rel="stylesheet" href="css/style.css">
 
 <!-- Alpine JS -->
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-<!-- Alpine JS -->
+<!-- App -->
  <script src="js/alpine.js"></script>
 </head>
 <body>
-<header x-data>
-    <a href="#" class="navbar-logo">PPI Tainan<span> Store</span></a>
 
-    <nav class="navbar">
-        <a class="active" href="#home">Home</a>
-        <a href="https://ppitainan.org/">About Us</a>
-        <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <!-- Navbar start -->
+    <nav class="navbar" x-data>
+        <a href="#" class="navbar-logo">PPI Tainan<span> Store</span></a>
 
-    <div class="navbar-extra">
-        <a href="#" id="shopping-cart-btn">
-            <i data-feather="shopping-cart"></i>
-            <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity">10</span>
-        </a>
-        <a href="#" id="hamburger-menu"><i data-feather="menu"></i> </a>
+        <div class="navbar-nav">
+            <a class="active" href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+
+        <div class="navbar-extra">
+            <a href="#" id="shopping-cart-button">
+                <i data-feather="shopping-cart"></i>
+                <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity">10</span>
+            </a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i> </a>
+        </div>
+
+<!-- Shopping Cart start -->
+<div class="shopping-cart">
+    <template x-for="(item, index) in $store.cart.items" x-keys="index">
+        <div class="cart-item">
+        <img :src="`img/${item.img}`" :alt="item.name">
+            <div class="item-detail">
+                <h3 x-text="item.name"></h3>
+                <div class="item-price">
+                    <span x-text="USD(item.price)"></span> &times;
+                    <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                    <span x-text="item.quantity"></span>
+                    <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
+                    <span x-text="USD(item.total)"></span>
+                </div>
+            </div>
+        </div>
+    </template>
+    <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Cart is Empty</h4>
+    <h4 x-show="$store.cart.items.length">Total : <span x-text="USD($store.cart.total)"></span></h4>
+
+    <div class="form-container" x-show="$store.cart.items.length">
+        <form action="" id="checkoutForm">
+            <h5>Customer Detail</h5>
+
+            <label for="name">
+                <span>Name</span>
+                <input type="text" name="name" id="name">
+            </label>
+
+            <label for="email">
+                <span>Email</span>
+                <input type="email" name="email" id="email">
+            </label>
+
+            <label for="phone">
+                <span>Phone Number</span>
+                <input type="number" name="phone" id="phone" autocomplete="off">
+            </label>
+
+            <button class="checkout-button" type="submit" id="checkout-button" value="checkout"> Check Out</button>
+        </form>
     </div>
-
-</header>
-    
-    <!-- Navbar end -->
+</div>
+<!-- Shopping Cart end -->
+</nav>
+<!-- Navbar End -->
 
 <!-- Slider Start -->
 <section class="home" id="home">
@@ -100,21 +145,78 @@
 </section>
 <!-- Slider End -->
 
-<!-- ezCOZY Products start -->
-<section class="products" id="products" x-data="products">
-    <h2>Our <span>Products</span></h2>
-    
-    <h3>EzCOZY</h3>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis sunt cum unde repellendus saepe debitis!</p>
-</section>
-
-<!-- ezCOZY Products end -->
-
 
 <!-- About Section Start -->
+<section id="about" class="about">
+    <h2>About <span>Our</span> Academy</h2>
+
+    <div class="row">
+        <div class="about-img">
+            <img src="img/FET.png" 
+            alt="About Us">
+        </div>
+        <div class="content">
+            <h3>Why <span>You</span> should choose Frieren as your mentor</h3>
+            <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum alias debitis obcaecati ducimus? Perferendis, iusto.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia sed dolorum molestias dignissimos velit ullam odio? Consequuntur facere quidem dolore.</p>
+        </div>
+    </div>
+</section>
 <!-- About Section End -->
-    
-     <!-- Footer start -->
+
+<!-- Product section start -->
+<section class="products" id="products" x-data="products">
+    <h2>Our <span>Products</span></h2>
+
+    <!-- Group 1 Items -->
+    <div class="row">
+        <template x-for="(item, index) in group1" :key="index">
+            <div class="product-card">
+                <div class="product-icons">
+                    <a href="#" @click.prevent="$store.cart.add(item)">
+                        <i data-feather="shopping-cart"></i>
+                    </a>
+                    <a href="#" class="item-detail-button" @click.prevent="$store.modal.open(item)">
+                        <i data-feather="eye"></i>
+                    </a>
+                </div>
+                <div class="product-image">
+                    <img :src="`img/${item.img}`" :alt="item.name">
+                </div>
+                <div class="product-content">
+                    <h3 x-text="item.name"></h3>
+                    <div class="product-price"><span x-text="USD(item.price)"></span></div>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <!-- Group 2 Items -->
+    <div class="row">
+        <template x-for="(item, index) in group2" :key="index">
+            <div class="product-card">
+                <div class="product-icons">
+                    <a href="#" @click.prevent="$store.cart.add(item)">
+                        <i data-feather="shopping-cart"></i>
+                    </a>
+                    <a href="#" class="item-detail-button" @click.prevent="$store.modal.open(item)">
+                        <i data-feather="eye"></i>
+                    </a>
+                </div>
+                <div class="product-image">
+                    <img :src="`img/${item.img}`" :alt="item.name">
+                </div>
+                <div class="product-content">
+                    <h3 x-text="item.name"></h3>
+                    <div class="product-price"><span x-text="USD(item.price)"></span></div>
+                </div>
+            </div>
+        </template>
+    </div>
+</section>
+<!-- Product section end -->
+
+<!-- Footer start -->
 <footer>
     <div class="socials">
         <a href="https://www.facebook.com/ppitainan"><i data-feather="facebook"></i></a>
@@ -125,7 +227,7 @@
 
     <div class="links">
         <a href="#home">Home</a>
-        <a href="https://ppitainan.org/">About Us</a>
+        <a href="#about">About Us</a>
         <a href="#"> Products </a>
         <a href="#contact">Contact</a>
     </div>
@@ -136,18 +238,43 @@
 </footer>
 
 <!-- Footer end -->
-   
-    <!-- Feather library -->
-    <script>
+
+<!-- Modal Box Item Detail start -->
+<div class="modal" id="item-detail-modal" x-data="$store.modal">
+    <div class="modal-container">
+        <a href="#" class="close-icon" @click.prevent="$store.modal.close()">
+            <i data-feather="x"></i>
+        </a>
+        <div class="modal-content" x-show="selectedItem">
+            <!-- Dynamically load modal image depending on item group -->
+            <img :src="`img/${selectedItem.modalImg || selectedItem.img}`" :alt="selectedItem.name">
+            <div class="product-content">
+                <h3 x-text="selectedItem.name"></h3>
+                <p x-text="selectedItem.description"></p>
+                <div class="product-price">
+                    <span x-text="USD(selectedItem.price)"></span>
+                </div>
+                <a href="#" @click.prevent="$store.cart.add(selectedItem)">
+                    <i data-feather="shopping-cart"></i><span>Add to Cart</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Box Item Detail end -->
+
+<!-- Feather icons -->
+<script>
         feather.replace();
-    </script>
+</script>
 
 <!-- SwiperJS-->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <!-- JS -->
 <script src="js/swiper.js"></script>
-<script src="js/script.js"></script>
 
+<!-- My Javascript -->
+<script src="js/script.js"></script>
 </body>
 </html>
