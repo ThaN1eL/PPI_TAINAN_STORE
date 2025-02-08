@@ -1,20 +1,21 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('products', () => ({
         group1: [
-            { id: 1, name: 'Omnipotence Staff', img: 'packet1.png',modalImg: 'packet12.png', price: 1000, description: 'Staff imbued with limitless power.' },
-            { id: 2, name: 'Megumin Hat',img: 'packet1.png',modalImg: 'packet12.png', price: 300, description: 'The explosion mage of Megumin.' },
-            { id: 3, name: 'Omnipotence Grimoire',img: 'packet1.png',modalImg: 'packet12.png', price: 5555, description: 'Ancient grimoire containing limitless spells.' },
+            { id: 1, name: 'Paket Klasik Tidur Nyenyak (5 items)', img: 'packet1.png',modalImg: 'packetA.png', price: 1000, description: '123' },
+            { id: 2, name: 'Paket Nyaman Tidur Nyenyak (6 items)',img: 'packet1.png',modalImg: 'packetB.png', price: 300, description: '123' },
+            { id: 3, name: 'Paket Mewah Tidur Nyenyak (6 items)',img: 'packet1.png',modalImg: 'packetC.png', price: 5555, description: '123' },
         ],
         group2: [
-            { id: 4, name: 'Holy Wand Court Emblem', img: 'FET.png', price: 2250, description: 'Emblem blessed by the court mages.' },
-            { id: 5, name: 'Holy Wand Court Emblem', img: 'FET.png', price: 2250, description: 'Emblem blessed by the court mages.' },
-            { id: 6, name: 'Holy Wand Court Emblem', img: 'FET.png', price: 2250, description: 'Emblem blessed by the court mages.' },
-            { id: 7, name: 'Holy Wand Court Emblem', img: 'FET.png', price: 2250, description: 'Emblem blessed by the court mages.' },
-            { id: 8, name: 'Holy Wand Court Emblem', img: 'FET.png', price: 2250, description: 'Emblem blessed by the court mages.' },
-            { id: 9, name: 'Holy Wand Court Emblem', img: 'FET.png', price: 2250, description: 'Emblem blessed by the court mages.' },
-            { id: 10, name: 'Holy Wand Court Emblem', img: 'FET.png', price: 2250, description: 'Emblem blessed by the court mages.' },
-            { id: 11, name: 'Holy Wand Court Emblem', img: 'FET.png', price: 2250, description: 'Emblem blessed by the court mages.' },
-            { id: 12, name: 'Holy Wand Court Emblem', img: 'FET.png', price: 2250, description: 'Emblem blessed by the court mages.' }
+            { id: 4, name: 'Seprai yang bisa dicuci', img: 'seprai.png', price: 2250, description: '123' },
+            { id: 5, name: 'Paket Barang Sehari-hari', img: 'utensil.png', price: 2250, description: '123' },
+            { id: 6, name: 'Hair Dryer Ion Negatif', img: 'hairdryer.png', price: 2250, description: '123' },
+            { id: 7, name: 'Stop Kontak 3 lubang&USB', img: 'stopkontak.png', price: 2250, description: '123' },
+            { id: 8, name: 'Feel Cool Guling', img: 'guling.png', price: 2250, description: '123' },
+            { id: 9, name: 'FET', img: 'FET.png', price: 2250, description: '123' },
+            { id: 10, name: 'FET', img: 'FET.png', price: 2250, description: '123' },
+            { id: 11, name: 'FET', img: 'FET.png', price: 2250, description: '123' },
+            { id: 12, name: 'Masker', img: 'FET.png', price: 2250, description: '123' },
+            { id: 13, name: 'Masker', img: 'FET.png', price: 2250, description: '123' }
         ]
     }));
 
@@ -83,10 +84,57 @@ document.addEventListener('alpine:init', () => {
     });
 });
 
-const USD = (number) => {
-    return new Intl.NumberFormat('usa-EN', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 2,
+
+document.addEventListener('alpine:init', () => {
+    // ... keep existing products data and cart store ...
+  
+    Alpine.store('checkout', {
+      formatMessage(items, total, customerData) {
+        const itemsList = items.map(item => 
+          `${item.name} (${item.quantity} x ${USD(item.price)} = ${USD(item.total)})`
+        ).join('\n');
+  
+        return `*Order Details*
+  *Customer Information*
+  Name: ${customerData.name}
+  Color: ${customerData.color}
+  Color Description: ${customerData.colorDescription}
+  
+  *Order Items*
+  ${itemsList}
+  
+  *Total: ${USD(total)}*
+  
+  Thank you for your order!`;
+      },
+  
+      submit(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+        const customerData = {
+          name: formData.get('name'),
+          color: formData.get('choice'),
+          colorDescription: formData.get('descriptionBox')
+        };
+        
+        const items = Alpine.store('cart').items;
+        const total = Alpine.store('cart').total;
+        
+        const message = this.formatMessage(items, total, customerData);
+        const whatsappUrl = `https://wa.me/886970615931?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappUrl, '_blank');
+      }
+    });
+  });
+  
+  // Keep the USD formatter function
+  const USD = (number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
     }).format(number);
-};
+  };

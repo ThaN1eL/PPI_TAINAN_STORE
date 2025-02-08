@@ -46,3 +46,13 @@ window.onclick = (e) => {
         Alpine.store('modal').close();
     }
 };
+
+
+//Form Container
+function showTextBox() {
+    document.getElementById('textBoxContainer').style.display = 'block';
+}
+
+function hideTextBox() {
+    document.getElementById('textBoxContainer').style.display = 'none';
+}

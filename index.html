@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>PPI Tainan Store</title>
     <link rel="icon" type="image/png" href="img/icon1.png">
 <!-- FONTs -->
@@ -36,7 +37,6 @@
             <a class="active" href="#home">Home</a>
             <a href="#about">About Us</a>
             <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
         </div>
 
 
@@ -66,28 +66,43 @@
         </div>
     </template>
     <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Cart is Empty</h4>
-    <h4 x-show="$store.cart.items.length">Total : <span x-text="USD($store.cart.total)"></span></h4>
+    <h3 x-show="$store.cart.items.length" style="text-align: center;">Total : <span x-text="USD($store.cart.total)"></span></h3>
 
     <div class="form-container" x-show="$store.cart.items.length">
-        <form action="" id="checkoutForm">
+        <form action="" id="checkoutForm" @submit="$store.checkout.submit($event)">
+            <input type="hidden" name="items" x-model="JSON.stringify($store.cart.items)">
+            <input type="hidden" name="total" x-model="$store.cart.total">
             <h5>Customer Detail</h5>
 
             <label for="name">
                 <span>Name</span>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" required>
             </label>
 
-            <label for="email">
-                <span>Email</span>
-                <input type="email" name="email" id="email">
-            </label>
+            <div class="radio-container">
+                <!-- Radio Buttons -->
+                <div class="radio-options">
+                    <span>Bed or Masker Color</span>
+                    <input type="radio" id="yes" name="choice" value="yes" onclick="showTextBox()" required>
+                    <label for="yes">YES</label>
+            
+                    <input type="radio" id="no" name="choice" value="no" onclick="hideTextBox()" required>
+                    <label for="no">NO</label>
+                </div>
+            
+                <!-- Hidden Text Box (will appear when YES is selected) -->
+                <div id="textBoxContainer" style="display: none;">
+                    <textarea 
+                        id="descriptionBox"
+                        name="descriptionBox"
+                        placeholder="Enter your description here..."
+                        rows="4"
+                        cols="50"
+                    ></textarea>
+                </div>
+            </div>
 
-            <label for="phone">
-                <span>Phone Number</span>
-                <input type="number" name="phone" id="phone" autocomplete="off">
-            </label>
-
-            <button class="checkout-button" type="submit" id="checkout-button" value="checkout"> Check Out</button>
+            <button class="checkout-button" type="submit" id="checkout-button" value="checkout"> Check to Admin</button>
         </form>
     </div>
 </div>
@@ -145,24 +160,49 @@
 </section>
 <!-- Slider End -->
 
+<!-- Custom Slider start -->
+ <div class="sliderCustom">
+    <div class="list">
+        <div class="text" style="--position: 1"><h3>Partnership with: </h3></div>
+        <div class="item" style="--position: 2"><img src="img/ezcozy.png" alt=""></div>
+        <div class="item" style="--position: 3"><img src="img/intwidn.png" alt=""></div>
+    </div>
+ </div>
+<!-- Custom Slider end -->
+
 
 <!-- About Section Start -->
 <section id="about" class="about">
-    <h2>About <span>Our</span> Academy</h2>
+    <h2>About <span>Us</span></h2>
 
     <div class="row">
         <div class="about-img">
-            <img src="img/FET.png" 
+            <img src="img/aboutUS.png" 
             alt="About Us">
         </div>
         <div class="content">
-            <h3>Why <span>You</span> should choose Frieren as your mentor</h3>
-            <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum alias debitis obcaecati ducimus? Perferendis, iusto.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia sed dolorum molestias dignissimos velit ullam odio? Consequuntur facere quidem dolore.</p>
+            <p> <span>Pelajar Indonesia di Tainan, Taiwan (PPI Tainan) </span>adalah entitas yang memainkan peran penting dalam mendukung dan mempersatukan pelajar Indonesia yang mengejar pendidikan di kota Tainan, Taiwan. Sejak didirikan pada tahun 2007, PPI Tainan telah menjadi wadah strategis bagi pelajar Indonesia, tidak hanya sebagai sarana komunikasi dan pengembangan diri tetapi juga sebagai duta budaya Indonesia yang menginspirasi di Taiwan.</p>
+            <div class="socials">
+                <h3>Contact <span>Us over here </span></h3>
+                <a href="https://ppitainan.org/"><i data-feather="globe"></i></a>
+                <a href="https://www.youtube.com/@ppitainan5467"><i data-feather="youtube"></i></a>
+                <a href="https://www.facebook.com/ppitainan"><i data-feather="facebook"></i></a>
+                <a href="https://www.instagram.com/ppi_tainan/"><i data-feather="instagram"></i></a>
+            </div>
         </div>
     </div>
 </section>
 <!-- About Section End -->
+
+<!-- Custom Slider start -->
+<div class="sliderCustom">
+    <div class="list">
+        <div class="text" style="--position: 1"><h3>Partnership with: </h3></div>
+        <div class="item" style="--position: 2"><img src="img/ezcozy.png" alt=""></div>
+        <div class="item" style="--position: 3"><img src="img/intwidn.png" alt=""></div>
+    </div>
+ </div>
+<!-- Custom Slider end -->
 
 <!-- Product section start -->
 <section class="products" id="products" x-data="products">
@@ -218,18 +258,10 @@
 
 <!-- Footer start -->
 <footer>
-    <div class="socials">
-        <a href="https://www.facebook.com/ppitainan"><i data-feather="facebook"></i></a>
-        <a href="#"><i data-feather="message-circle"></i></a>
-        <a href="https://www.instagram.com/ppi_tainan/"><i data-feather="instagram"></i></a>
-        <a href="https://www.youtube.com/@ppitainan5467"><i data-feather="youtube"></i></a>
-    </div>
-
     <div class="links">
         <a href="#home">Home</a>
         <a href="#about">About Us</a>
         <a href="#"> Products </a>
-        <a href="#contact">Contact</a>
     </div>
 
     <div class="credit">
