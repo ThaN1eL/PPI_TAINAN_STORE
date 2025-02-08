@@ -400,14 +400,24 @@ section:nth-child(2){
 
 .form-container .radio-container {
     margin: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .form-container .radio-options {
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.form-container .radio-options span {
+    margin-right: 1rem;
+    text-align: center;
 }
 
 .form-container .radio-options label {
-    margin-right: 20px;
+    margin-right: 10px; 
+    font-weight: bold;
 }
 
 #textBoxContainer {
@@ -579,7 +589,7 @@ section:nth-child(2){
     width: 4rem;
     height: 4rem;
     color:var(--ruby);
-    margin: 0.3rem;
+    margin: 0.6rem;
     border:  1px solid #666;
     border-radius: 50%;
     display: flex;
@@ -594,6 +604,8 @@ section:nth-child(2){
 
 .products .product-image img {
     height: 15rem;
+    border-radius:1rem;
+    box-shadow: rgba(237, 0, 0, 0.921) 0px 1px 4px, rgb(223, 58, 58) 0px 0px 0px 3px;
 }
 
 .products .product-content h3 {
@@ -613,6 +625,8 @@ background-color:#eee;
 text-align: center;
 padding: 1rem 0 3rem; 
 margin-top: 3rem;
+font-weight: 500;
+font-size: 1.25rem;
 }
 
 footer .links {
@@ -634,10 +648,9 @@ footer .credit {
     color: black;
 }
 
-footer .credit a{
+footer .credit span{
     color: var(--ruby);
     font-weight: 700;
-    text-decoration: none;
 }
 
 /* Modal Box */
@@ -824,6 +837,10 @@ footer .credit a{
 
 .product-content h3{
     font-size: 1.5rem;
+}
+
+.products .product-icons a {
+    margin: 1rem;
 }
 
 .modal-container {

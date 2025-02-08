@@ -11,11 +11,11 @@ document.addEventListener('alpine:init', () => {
             { id: 6, name: 'Hair Dryer Ion Negatif', img: 'hairdryer.png', price: 2250, description: '123' },
             { id: 7, name: 'Stop Kontak 3 lubang&USB', img: 'stopkontak.png', price: 2250, description: '123' },
             { id: 8, name: 'Feel Cool Guling', img: 'guling.png', price: 2250, description: '123' },
-            { id: 9, name: 'FET', img: 'FET.png', price: 2250, description: '123' },
-            { id: 10, name: 'FET', img: 'FET.png', price: 2250, description: '123' },
-            { id: 11, name: 'FET', img: 'FET.png', price: 2250, description: '123' },
-            { id: 12, name: 'Masker', img: 'FET.png', price: 2250, description: '123' },
-            { id: 13, name: 'Masker', img: 'FET.png', price: 2250, description: '123' }
+            { id: 9, name: 'Mask 50pcs', img: 'mask.png', price: 100, description: '123' },
+            { id: 10, name: 'FET 90 Hari', img: 'FET90D.png', price: 1250, description: '90 Hari Unlimited Internet, 30GB/Bulan <br>(Penurunan cepatan hingga 5Mbps setelah melewati batas kuota) <br>Pulsa telepon 150NTD. <br>Catatan: <br>1. Sebelum internet habis bisa diperpanjang kuotanya. <br>2.Pembelian pulsa telepon dapat dipakai selama 180 hari.' },
+            { id: 11, name: 'FET 360 Hari', img: 'FET.png', price: 3850, description: '360 Hari Unlimited Internet, 570GB/Bulan <br>(Penurunan kecepatan hingga 10Mbps setelah melewati batas kuota), <br>Pulsa telepon 600NTD(berlaku 60 hari setelah pengaktifan kartu) <br>Catatan: <br>1. Sebelum internet habis bisa diperpanjang kuotanya.<br> 2.Pembelian pulsa telepon dapat dipakai selama 180 hari.' },
+            { id: 12, name: 'Taiwan Mobile 180 Hari', img: 'OK.png', price: 2200, description: '180 Hari Unlimited Internet.<br> Catatan: <br>1. Sebelum internet habis bisa diperpanjang kuotanya.<br>2.Pembelian pulsa telepon dapat dipakai selama 180 hari.' },
+            { id: 13, name: 'Taiwan Mobile 360 Hari', img: 'OK.png', price: 4200, description: '360 Hari Unlimited Internet, Pulsa Telepon 300NTD. <br>Catatan: <br>1. Sebelum internet habis bisa diperpanjang kuotanya. <br>2.Pembelian pulsa telepon dapat dipakai selama 180 hari.' }
         ]
     }));
 
@@ -135,6 +135,6 @@ document.addEventListener('alpine:init', () => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-      minimumFractionDigits: 2,
+      minimumFractionDigits: 0,
     }).format(number);
   };

@@ -82,7 +82,7 @@
             <div class="radio-container">
                 <!-- Radio Buttons -->
                 <div class="radio-options">
-                    <span>Bed or Masker Color</span>
+                    <span>BedColor <br>OR<br> MaskerColor</span>
                     <input type="radio" id="yes" name="choice" value="yes" onclick="showTextBox()" required>
                     <label for="yes">YES</label>
             
@@ -122,7 +122,7 @@
                     <span> Best Deals !</span>
                     <h3>Bedding Package B</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, accusantium mollitia. Recusandae, dolorum quaerat. Architecto aspernatur inventore dolorem tempora nemo modi culpa mollitia et. Recusandae libero tempora fugiat nulla voluptatum!</p>
-                    <a href="#" class="btn">Order NOW</a>
+                    <a href="#products" class="btn">Order NOW</a>
                 </div>
                 <div class="image">
                     <img src="img/packB.png" alt="">
@@ -133,7 +133,7 @@
                     <span> Best Deals !</span>
                     <h3>FET 360 Days</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, accusantium mollitia. Recusandae, dolorum quaerat. Architecto aspernatur inventore dolorem tempora nemo modi culpa mollitia et. Recusandae libero tempora fugiat nulla voluptatum!</p>
-                    <a href="#" class="btn">Order NOW</a>
+                    <a href="#products" class="btn">Order NOW</a>
                 </div>
                 <div class="image">
                     <img src="img/FET.png" alt="">
@@ -144,7 +144,7 @@
                     <span> Best Deals !</span>
                     <h3>Mask Pack </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, accusantium mollitia. Recusandae, dolorum quaerat. Architecto aspernatur inventore dolorem tempora nemo modi culpa mollitia et. Recusandae libero tempora fugiat nulla voluptatum!</p>
-                    <a href="#" class="btn">Order NOW</a>
+                    <a href="#product-mask-50pcs" class="btn">Order NOW</a>
                 </div>
                 <div class="image">
                     <img src="img/mask.png" alt="">
@@ -261,11 +261,11 @@
     <div class="links">
         <a href="#home">Home</a>
         <a href="#about">About Us</a>
-        <a href="#"> Products </a>
+        <a href="#products"> Products </a>
     </div>
 
     <div class="credit">
-        <p>Created by <a href="">th4N1eL</a>. &copy; 2025.</p>
+        <p>Created by <span>th4N1eL</span> &copy; 2025.</p>
     </div>
 </footer>
 
@@ -282,7 +282,7 @@
             <img :src="`img/${selectedItem.modalImg || selectedItem.img}`" :alt="selectedItem.name">
             <div class="product-content">
                 <h3 x-text="selectedItem.name"></h3>
-                <p x-text="selectedItem.description"></p>
+                <p x-html="selectedItem.description"></p>
                 <div class="product-price">
                     <span x-text="USD(selectedItem.price)"></span>
                 </div>
