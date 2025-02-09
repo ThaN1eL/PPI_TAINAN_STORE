@@ -1079,4 +1079,17 @@ footer .credit span{
     gap: 1rem;
 }
 
-}}
+.form-container .radio-options label {
+    margin-right: 3rem;
+}
+
+@media (max-width: 430px) {
+    html{
+        font-size: 50%;
+    }
+
+.form-container .radio-options label {
+    margin-right: 3rem;
+}
+
+}}}
