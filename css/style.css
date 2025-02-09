@@ -980,6 +980,14 @@ footer .credit span{
     width: 70%;
 }
 
+.form-container .radio-options {
+    gap: 0.8rem;
+}
+
+.form-container .radio-options label {
+    margin-right: 1rem;
+}
+
 .form-container .checkout-button {
     padding: 4px 14px;
     background-color: royalblue;
@@ -1076,20 +1084,28 @@ footer .credit span{
 }
 
 .form-container .radio-options {
-    gap: 1rem;
+    gap: 0.5rem;
+    justify-content: flex-start;
 }
 
 .form-container .radio-options label {
-    margin-right: 3rem;
+    margin-right: 0;
+    padding: 0.3rem;
 }
 
-@media (max-width: 430px) {
-    html{
-        font-size: 50%;
+/* iOS Safari Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+
+.form-container .radio-options {
+    gap: 0.8rem;
     }
-
+    
 .form-container .radio-options label {
-    margin-right: 3rem;
-}
-
+    margin-right: 0;
+    }
+    
+.form-container .radio-options input[type="radio"] {
+    position: relative;
+    margin: 0;
+    }
 }}}
