@@ -1,7 +1,7 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('products', () => ({
         group1: [
-            { id: 1, name: 'Paket Klasik Tidur Nyenyak (5 items)', img: 'packet1.png',modalImg: 'packetA.png', price: 1000, description: '123' },
+            { id: 1, name: 'Paket Klasik Tidur Nyenyak (5 items)', img: 'packet1.png',modalImg: 'packetA.png', price: 1000, description: '1. Kasur Anti-Bakteri Pressure Relief:<br>Busa elastis  yang menopang badan, Sarung bisa dicuci, Tidak pengap dan tidak Panas<br>Ringan dan mudah disimpan<br>Bahan Dalam: Busa penyangga dengan ketebalan 5cm<br>Kain: Kain elastis antibakteri DAIWA Jepang<br>2. Bantal Anti bakteri dan Tungau: Sarung anti bakteri, Microfiber Cloth 1Kg,<br>Lembut dan tidak kempes<br>3. Selimut Musim Dingin Bahan Graphene:<br>➢Selimut ringan 2.1kg<br>➢Tambahan serat Graphene<br>➢Efektif menjaga kehangatan<br>➢Pengikat di setiap sudut<br>4.Sarung Bantal Modal Amplop:<br>➢Mudah dilepas dan dicuci<br>5.Selimut Tipis Multifungsi:<br>➢Sejuk saat musim panas<br>➢Kapas tebal saat musim dingin' },
             { id: 2, name: 'Paket Nyaman Tidur Nyenyak (6 items)',img: 'packet1.png',modalImg: 'packetB.png', price: 300, description: '123' },
             { id: 3, name: 'Paket Mewah Tidur Nyenyak (6 items)',img: 'packet1.png',modalImg: 'packetC.png', price: 5555, description: '123' },
         ],

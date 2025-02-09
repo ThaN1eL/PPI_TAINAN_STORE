@@ -31,6 +31,8 @@ body{
 
 /* sliderCUSTOM */
 .sliderCustom {
+    position: relative;
+    overflow: hidden;
     --width: 100px;
     --height: 50px;
     --quantity:3;
@@ -983,4 +985,11 @@ footer .credit span{
     html{
         font-size: 55%;
     }
+
+.sliderCustom .list .text,
+.sliderCustom .list .item{
+    width: 70px;
+    animation: autoRun 4s linear infinite;
+    animation-delay: calc( (4s / var(--quantity)) * (var(--position) - 1) );
+}
 }
