@@ -123,7 +123,7 @@ document.addEventListener('alpine:init', () => {
         const total = Alpine.store('cart').total;
         
         const message = this.formatMessage(items, total, customerData);
-        const whatsappUrl = `https://wa.me/886970615931?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = `https://wa.me/886901400507?text=${encodeURIComponent(message)}`;
         
         window.open(whatsappUrl, '_blank');
       }

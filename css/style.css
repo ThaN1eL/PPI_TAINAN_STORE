@@ -992,4 +992,10 @@ footer .credit span{
     animation: autoRun 4s linear infinite;
     animation-delay: calc( (4s / var(--quantity)) * (var(--position) - 1) );
 }
+
+
+.swiper-pagination {
+    margin-bottom: -1rem;
+    margin-left: 7rem;
+}
 }
