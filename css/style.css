@@ -38,7 +38,7 @@ body{
     --quantity:3;
 
     width: 100%;
-    height: var(--height); /* Increase the height to make it visible */
+    height: var(--height);
     mask-image: linear-gradient(
         to right,
         transparent,
@@ -137,7 +137,7 @@ section:nth-child(2){
 
 .navbar .navbar-nav a {
     color: #aa3232;
-    display: inline-block; /*a display = inline! ,inlineblock = memberi margin tanpa membuat inline turun ke bawah*/
+    display: inline-block;
     font-size: 1.2rem;
     border-radius: .5rem;
     padding: .5rem 1.5rem;
@@ -400,37 +400,76 @@ section:nth-child(2){
     width: 70%;
 }
 
+/* Radio Container Styling */
 .form-container .radio-container {
-    margin: 20px;
+    margin: 20px 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
 }
 
+/* Radio Options Styling */
 .form-container .radio-options {
-    margin-bottom: 15px;
     display: flex;
     align-items: center;
+    gap: 15px;
+    width: 100%;
 }
 
 .form-container .radio-options span {
     margin-right: 1rem;
     text-align: center;
+    color: var(--ruby); 
+    font-weight: 500;
 }
 
 .form-container .radio-options label {
-    margin-right: 10px; 
+    margin-right: 8rem;
     font-weight: bold;
+    cursor: pointer;
 }
 
+/* Radio Button Styling */
+.form-container .radio-options input[type="radio"] {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* Textarea Container Styling */
 #textBoxContainer {
     width: 100%;
-    max-width: 400px;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    resize: vertical;
+    transition: all 0.3s ease;
 }
+
+/* Textarea Styling */
+#descriptionBox {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 60px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+#descriptionBox::placeholder {
+    color: #999;
+    font-size: 13px;
+}
+
+/* Focus State */
+#descriptionBox:focus {
+    outline: none;
+    border-color: var(--ruby);
+    box-shadow: 0 0 0 2px rgba(224, 17, 95, 0.1);
+}
+
+
 
 .form-container .checkout-button {
     padding: 6px 14px;
@@ -566,7 +605,7 @@ section:nth-child(2){
 /* Products Section */
 .products .row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* repeat parameter: jika ukuran lbh kcl dari 30rem, dia jadi 1 column. jika lbh dari 30rem maka jadi semaksimalnya  */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); 
     gap: 1.5rem;
     margin-top: 4rem;
 }
@@ -612,12 +651,12 @@ section:nth-child(2){
 
 .products .product-content h3 {
     color: #353839;
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
 .products .product-price {
     color: #353839;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -671,15 +710,20 @@ footer .credit span{
 
 .modal-container {
     position: relative;
-    background-color: rgba(254, 254, 254, 0.7);
-    color:black;
-    margin: 15% auto;
-    padding: 1.2rem;
+    background-color: rgba(254, 254, 254, 0.3);
+    backdrop-filter: blur(5px);
+    color: whitesmoke;
+    margin: 5% auto;
+    padding: 2rem;
     border: 1px solid #666;
-    width: 80%;
-    height: 80vh;
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    min-height: 200px;
+    max-height: 90vh;
     animation: animateModal 0.5s;
-    border-radius: 3rem;
+    border-radius: 2rem;
+    overflow-y: auto;
 }
 
 /* Modal Animation */
@@ -697,46 +741,70 @@ footer .credit span{
 .modal-container .close-icon {
     position: absolute;
     right: 1.5rem;
-    height: 1rem;
+    top: 1.5rem; 
+    height: 1.5rem; 
+    cursor: pointer; 
+    z-index: 1; 
 }
 
-.modal-container .close-icon :hover{
-    color:#f00;
+.modal-container .close-icon:hover {
+    color: #f00;
+    transform: scale(1.1); 
 }
 
 .modal-content {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; 
+    gap: 2rem; 
+    padding: 1rem; 
 }
 
 
 .modal-content img {
-    height: 25rem;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 1rem;
+    height: auto; 
+    max-height: 25rem;
+    width: 100%; 
+    max-width: 400px; 
+    margin: 0; 
+    border-radius: 2rem;
     object-fit: contain;
+}
+
+.modal-content .product-price {
+    font-size: 1.5rem;
+    color:greenyellow;
+    font-weight: 700;
+    text-align: center;
 }
 
 .modal-content p {
     font-size: 1.2rem;
     line-height: 1.8rem;
-    margin-top: 1.2rem;
+    margin: 0;
+    flex: 1;
+    min-width: 300px;
 }
 
-.modal-content a{
+.modal-content a {
     display: flex;
     gap: 1rem;
-    width: 12rem;
+    width: auto;
+    min-width: 12rem;
     background-color: var(--primary);
     color: var(--ruby);
-    margin-top: 0.8rem;
-    padding: 1rem 1.3rem; 
+    margin-top: 1rem;
+    padding: 1rem 1.3rem;
     text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
 }
 
+
 .modal-content a:hover {
-    color:red;
+    color: red;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
 }
 
 
@@ -821,6 +889,8 @@ footer .credit span{
 
 .modal-content {
     flex-wrap: wrap;
+    flex-direction: column;
+
 }
 
 .modal-content img{
@@ -838,7 +908,7 @@ footer .credit span{
 }
 
 .product-content h3{
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .products .product-icons a {
@@ -846,8 +916,9 @@ footer .credit span{
 }
 
 .modal-container {
-    width: 95%; 
-    height: 60vh;
+    width: 95%;
+    margin: 2% auto;
+    padding: 1rem;
 }
 
 
@@ -923,7 +994,7 @@ footer .credit span{
 
 .swiper-pagination {
     margin-bottom: -1rem;
-    margin-left: 2rem;
+    margin-left: 4rem;
 }
 
 .btn:hover {
@@ -940,12 +1011,10 @@ footer .credit span{
     flex: 1 1 100%;
 }
 
-/* Maintain aspect ratio */
 .home .home-slider .slide .image img {
     object-fit: contain; 
 }
 
-/* Ensure that the text content (span, h3, p) appears below the image */
 .home .home-slider .slide .content {
     order: 2;
 }
@@ -979,6 +1048,8 @@ footer .credit span{
     animation-delay: calc( (6s / var(--quantity)) * (var(--position) - 1) );
 }
 
+#textBoxContainer {
+    width:90%;
 }
 /* mobile */
 @media (max-width: 450px) {
@@ -992,10 +1063,20 @@ footer .credit span{
     animation: autoRun 4s linear infinite;
     animation-delay: calc( (4s / var(--quantity)) * (var(--position) - 1) );
 }
-
-
 .swiper-pagination {
     margin-bottom: -1rem;
     margin-left: 7rem;
 }
+
+#textBoxContainer {
+    width: 100%;
+    max-width: 100%;
+    padding: 5px;
+    font-size: 10px;
 }
+
+.form-container .radio-options {
+    gap: 1rem;
+}
+
+}}
