@@ -50,9 +50,10 @@
 
 <!-- Shopping Cart start -->
 <div class="shopping-cart">
+    <!-- Cart Items Template -->
     <template x-for="(item, index) in $store.cart.items" x-keys="index">
         <div class="cart-item">
-        <img :src="`img/${item.img}`" :alt="item.name">
+            <img :src="`img/${item.img}`" :alt="item.name">
             <div class="item-detail">
                 <h3 x-text="item.name"></h3>
                 <div class="item-price">
@@ -65,8 +66,11 @@
             </div>
         </div>
     </template>
+
     <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Cart is Empty</h4>
-    <h3 x-show="$store.cart.items.length" style="text-align: center;">Total : <span x-text="USD($store.cart.total)"></span></h3>
+    <h3 x-show="$store.cart.items.length" style="text-align: center;">
+        Total : <span x-text="USD($store.cart.total)"></span>
+    </h3>
 
     <div class="form-container" x-show="$store.cart.items.length">
         <form action="" id="checkoutForm" @submit="$store.checkout.submit($event)">
@@ -74,34 +78,109 @@
             <input type="hidden" name="total" x-model="$store.cart.total">
             <h5>Customer Detail</h5>
 
-            <label for="name">
-                <span>Name</span>
-                <input type="text" name="name" id="name" required>
-            </label>
-
-            <div class="radio-container">
-                <!-- Radio Buttons -->
-                <div class="radio-options">
-                    <span>Any BedColor <br>OR<br> MaskerColor?</span>
-                    <input type="radio" id="yes" name="choice" value="yes" onclick="showTextBox()" required>
-                    <label for="yes">YES</label>
+            <div class="form-section">
+                <div class="radio-container">
+                    <div class="radio-options">
+                        <span>Select Form Type:</span>
+                        <input type="radio" id="simcard-form" name="formType" value="simcard" 
+                               x-model="$store.checkout.formType" required>
+                        <label for="simcard-form">SIM Card Format</label>
             
-                    <input type="radio" id="no" name="choice" value="no" onclick="hideTextBox()" required>
-                    <label for="no">NO</label>
+                        <input type="radio" id="other-form" name="formType" value="other" 
+                               x-model="$store.checkout.formType" required>
+                        <label for="other-form">Form Bed/Masker</label>
+                    </div>
                 </div>
-            
-                <!-- Hidden Text Box (will appear when YES is selected) -->
-                <div id="textBoxContainer" style="display: none;">
-                    <textarea 
-                        id="descriptionBox"
-                        name="descriptionBox"
-                        placeholder="Input your color choice here..."
-                        rows="4"
-                    ></textarea>
+
+                <!-- SIM Card Format Form -->
+                <div x-show="$store.checkout.formType === 'simcard'" class="form-fields">
+                    <label>
+                        <span>Nama (sesuai passport):</span>
+                        <input type="text" name="simcard_name">
+                    </label>
+                    <label>
+                        <span>Nama universitas:</span>
+                        <input type="text" name="simcard_university">
+                    </label>
+                    <label>
+                        <span>Nomor passport:</span>
+                        <input type="text" name="simcard_passport">
+                    </label>
+                    <label>
+                        <span>Tanggal lahir:</span>
+                        <input type="date" name="simcard_birthdate">
+                    </label>
+                    <label>
+                        <span>No. Telp Indo:</span>
+                        <input type="tel" name="simcard_phone">
+                    </label>
+                    <label>
+                        <span>Tanggal kedatangan:</span>
+                        <input type="date" name="simcard_arrival">
+                    </label>
+                </div>
+
+                <!-- Other Format Form -->
+                <div x-show="$store.checkout.formType === 'other'" class="form-fields">
+                    <label>
+                        <span>Nama:</span>
+                        <input type="text" name="other_name" required>
+                    </label>
+                    <label>
+                        <span>Nomor telp:</span>
+                        <input type="tel" name="other_phone">
+                    </label>
+                    <label>
+                        <span>Email:</span>
+                        <input type="email" name="other_email">
+                    </label>
+                    <label>
+                        <span>Tanggal kedatangan:</span>
+                        <input type="date" name="other_arrival">
+                    </label>
+                    <label>
+                        <span>Jenis kelamin:</span>
+                        <select name="other_gender">
+                            <option value="">Pilih</option>
+                            <option value="male">Laki-laki</option>
+                            <option value="female">Perempuan</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Alamat Dorm:</span>
+                        <input type="text" name="other_address">
+                    </label>
+                    <label>
+                        <span>Warna Masker/Bed:</span>
+                        <input type="text" name="other_color">
+                    </label>
+
+                    <!-- Additional Fields for Other Format -->
+                    <div x-show="$store.checkout.showAdditionalFields" class="additional-fields">
+                        <label>
+                            <span>Nomor Passport:</span>
+                            <input type="text" name="other_passport">
+                        </label>
+                        <label>
+                            <span>Tanggal lahir:</span>
+                            <input type="date" name="other_birthdate">
+                        </label>
+                        <label>
+                            <span>Nama Universitas:</span>
+                            <input type="text" name="other_university">
+                        </label>
+                    </div>
+
+                    <!-- Checkbox to Show/Hide Additional Fields -->
+                    <div class="additional-fields-toggle">
+                        <input type="checkbox" id="show-additional" 
+                               x-model="$store.checkout.showAdditionalFields">
+                        <label for="show-additional">Checklist jika Checkout Simcard</label>
+                    </div>
                 </div>
             </div>
 
-            <button class="checkout-button" type="submit" id="checkout-button" value="checkout"> Check to Admin</button>
+            <button class="checkout-button" type="submit" id="checkout-button">Send to Admin</button>
         </form>
     </div>
 </div>

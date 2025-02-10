@@ -241,7 +241,6 @@ section:nth-child(2){
 }
 
 
-
 /* Shopping Cart */
 #shopping-cart-button {
     position: relative;
@@ -382,22 +381,42 @@ section:nth-child(2){
     text-align: center;
 }
 
-.form-container label {
+/* Form Section Layout */
+.form-section {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form Fields Styling */
+.form-container .form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.form-container .form-fields label {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 }
 
-.form-container span {
+.form-container .form-fields label span {
+    flex: 0 0 40%;
     text-align: right;
+    margin-right: 10px;
+    color: var(--ruby);
 }
 
-.form-container input {
+.form-container .form-fields input,
+.form-container .form-fields select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     background-color: #ddd;
-    padding: 5px;
-    font-size: 1rem;
-    width: 70%;
 }
 
 /* Radio Container Styling */
@@ -409,7 +428,6 @@ section:nth-child(2){
     gap: 10px;
 }
 
-/* Radio Options Styling - Mobile Optimization */
 .form-container .radio-options {
     display: flex;
     align-items: center;
@@ -437,74 +455,21 @@ section:nth-child(2){
     cursor: pointer;
 }
 
-/* Radio Button Styling */
-.form-container .radio-options input[type="radio"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+/* Additional Fields Toggle */
+.additional-fields-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.additional-fields-toggle input[type="checkbox"] {
     width: 20px;
     height: 20px;
-    border: 2px solid var(--ruby);
-    border-radius: 50%;
-    outline: none;
-    margin: 0;
-    cursor: pointer;
-    position: relative;
-    flex-shrink: 0;
 }
 
-.form-container .radio-options input[type="radio"]:checked {
-    background-color: var(--ruby);
-    border-color: var(--ruby);
-}
-
-.form-container .radio-options input[type="radio"]:checked::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: white;
-}
-
-/* Textarea Container Styling */
-#textBoxContainer {
-    width: 100%;
-    transition: all 0.3s ease;
-}
-
-/* Textarea Styling */
-#descriptionBox {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    font-family: inherit;
-    resize: vertical;
-    min-height: 60px;
-    background-color: #fff;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-#descriptionBox::placeholder {
-    color: #999;
-    font-size: 13px;
-}
-
-/* Focus State */
-#descriptionBox:focus {
-    outline: none;
-    border-color: var(--ruby);
-    box-shadow: 0 0 0 2px rgba(224, 17, 95, 0.1);
-}
-
-
-
+/* Checkout Button */
 .form-container .checkout-button {
     padding: 6px 14px;
     background-color: royalblue;
@@ -515,12 +480,6 @@ section:nth-child(2){
     margin: 1rem auto;
     cursor: pointer;
 }
-
-.form-container .checkout-button.disabled {
-    background-color: #999;
-    cursor: not-allowed;
-}
-
 
 /* About Section */
 .about,
@@ -996,30 +955,36 @@ footer .credit span{
     text-align: center;
 }
 
-.form-container label {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.form-container .form-fields label {
+    flex-direction: column;
+    align-items: flex-start;
     margin: 1rem 0;
+    gap: 0.5rem;
 }
 
-.form-container span {
-    text-align: right;
+.form-container .form-fields label span {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0.5rem;
 }
 
-.form-container input {
-    background-color: #ddd;
-    padding: 5px;
+.form-container .form-fields input,
+.form-container .form-fields select {
+    width: 100%;
+    padding: 10px;
     font-size: 1rem;
-    width: 70%;
 }
 
 .form-container .radio-options {
+    flex-wrap: wrap;
     gap: 0.8rem;
+    justify-content: flex-start;
 }
 
 .form-container .radio-options label {
     margin-right: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 .form-container .checkout-button {
@@ -1031,6 +996,7 @@ footer .credit span{
     border-radius: 20px;
     margin: 1rem auto;
     cursor: pointer;
+    width: 100%;
 }
 
 
@@ -1110,11 +1076,8 @@ footer .credit span{
     margin-left: 7rem;
 }
 
-#textBoxContainer {
-    width: 100%;
-    max-width: 100%;
-    padding: 5px;
-    font-size: 10px;
+.form-container .form-fields label {
+    margin: 0.5rem 0;
 }
 
 .form-container .radio-options {
@@ -1124,18 +1087,28 @@ footer .credit span{
 }
 
 .form-container .radio-options span {
-    font-size: 12px;
-    min-width: 70px;
+    font-size: 10px;
+    min-width: 50px;
 }
 
 .form-container .radio-options label {
-    font-size: 12px;
-    margin-right: 5px;
+    font-size: 8px;
+    margin-right: 1rem;
 }
 
 .form-container .radio-options input[type="radio"] {
-    width: 18px;
-    height: 18px;
+    width: 10px;
+    height: 10px;
+    size: 10px;
+}
+
+.additional-fields-toggle {
+    flex-direction: column;
+    align-items:center;
+}
+
+.additional-fields-toggle label {
+    margin-right: 2rem;
 }
 
 /* iOS Safari Specific Fixes */
@@ -1153,4 +1126,4 @@ footer .credit span{
 .form-container .radio-container {
     padding: 0 10px;
 }
-}}}
+}}};

@@ -86,46 +86,104 @@ document.addEventListener('alpine:init', () => {
 
 
 document.addEventListener('alpine:init', () => {
-    // ... keep existing products data and cart store ...
-  
+    // Existing cart store remains the same
     Alpine.store('checkout', {
-      formatMessage(items, total, customerData) {
-        const itemsList = items.map(item => 
-          `${item.name} (${item.quantity} x ${USD(item.price)} = ${USD(item.total)})`
-        ).join('\n');
-  
-        return `*Order Details*
-  *Customer Information*
-  Name: ${customerData.name}
-  Is there any color?: ${customerData.color}
-  Color Description: ${customerData.colorDescription}
-  
-  *Order Items*
-  ${itemsList}
-  
-  *Total: ${USD(total)}*`;},
-  
-      submit(event) {
-        event.preventDefault();
-        
-        const form = event.target;
-        const formData = new FormData(form);
-        const customerData = {
-          name: formData.get('name'),
-          color: formData.get('choice'),
-          colorDescription: formData.get('descriptionBox')
-        };
-        
-        const items = Alpine.store('cart').items;
-        const total = Alpine.store('cart').total;
-        
-        const message = this.formatMessage(items, total, customerData);
-        const whatsappUrl = `https://wa.me/886901400507?text=${encodeURIComponent(message)}`;
-        
-        window.open(whatsappUrl, '_blank');
-      }
+        formType: '', // Track which form type is selected
+        showAdditionalFields: false, // Control additional fields visibility
+
+        formatMessage(items, total, customerData) {
+            const itemsList = items.map(item => 
+                `${item.name} (${item.quantity} x ${USD(item.price)} = ${USD(item.total)})`
+            ).join('\n');
+
+            // Dynamically format message based on form type
+            let customerInfo = '';
+            if (customerData.formType === 'simcard') {
+                customerInfo = `
+*SIM Card Format*
+Nama (sesuai passport): ${customerData.simcard_name}
+Nama universitas: ${customerData.simcard_university}
+Nomor passport: ${customerData.simcard_passport}
+Tanggal lahir: ${customerData.simcard_birthdate}
+No. Telp Indo: ${customerData.simcard_phone}
+Tanggal kedatangan: ${customerData.simcard_arrival}`;
+            } else if (customerData.formType === 'other') {
+                customerInfo = `
+*Other Format*
+Nama: ${customerData.other_name}
+Nomor telp: ${customerData.other_phone}
+Email: ${customerData.other_email}
+Tanggal kedatangan: ${customerData.other_arrival}
+Jenis kelamin: ${customerData.other_gender}
+Alamat Dorm: ${customerData.other_address}
+Warna Masker/Bed: ${customerData.other_color}`;
+
+                // Include additional fields if selected
+                if (customerData.showAdditionalFields) {
+                    customerInfo += `
+*Informasi Tambahan*
+Nomor passport: ${customerData.other_passport}
+Tanggal lahir: ${customerData.other_birthdate}
+Nama universitas: ${customerData.other_university}`;
+                }
+            }
+
+            return `*Order Details*
+${customerInfo}
+
+*Order Items*
+${itemsList}
+
+*Total: ${USD(total)}*`;
+        },
+
+        submit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Collect form data dynamically based on selected form type
+            const customerData = {
+                formType: formData.get('formType'),
+                showAdditionalFields: this.showAdditionalFields
+            };
+
+            // Collect data based on form type
+            if (customerData.formType === 'simcard') {
+                customerData.simcard_name = formData.get('simcard_name');
+                customerData.simcard_university = formData.get('simcard_university');
+                customerData.simcard_passport = formData.get('simcard_passport');
+                customerData.simcard_birthdate = formData.get('simcard_birthdate');
+                customerData.simcard_phone = formData.get('simcard_phone');
+                customerData.simcard_arrival = formData.get('simcard_arrival');
+            } else if (customerData.formType === 'other') {
+                customerData.other_name = formData.get('other_name');
+                customerData.other_phone = formData.get('other_phone');
+                customerData.other_email = formData.get('other_email');
+                customerData.other_arrival = formData.get('other_arrival');
+                customerData.other_gender = formData.get('other_gender');
+                customerData.other_address = formData.get('other_address');
+                customerData.other_color = formData.get('other_color');
+
+                // Additional fields
+                if (this.showAdditionalFields) {
+                    customerData.other_passport = formData.get('other_passport');
+                    customerData.other_birthdate = formData.get('other_birthdate');
+                    customerData.other_university = formData.get('other_university');
+                }
+            }
+            
+            const items = Alpine.store('cart').items;
+            const total = Alpine.store('cart').total;
+            
+            const message = this.formatMessage(items, total, customerData);
+            const whatsappUrl = `https://wa.me/886901400507?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
     });
-  });
+});
   
   // Keep the USD formatter function
   const USD = (number) => {
