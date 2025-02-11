@@ -86,7 +86,6 @@ document.addEventListener('alpine:init', () => {
 
 
 document.addEventListener('alpine:init', () => {
-    // Existing cart store remains the same
     Alpine.store('checkout', {
         formType: '', 
         showAdditionalFields: false, 

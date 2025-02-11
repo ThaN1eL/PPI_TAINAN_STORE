@@ -37,7 +37,6 @@ document.addEventListener('click', function (e) {
 });
 
 
-
 //Modal Box
 // Click outside to close modal
 window.onclick = (e) => {
@@ -46,4 +45,3 @@ window.onclick = (e) => {
         Alpine.store('modal').close();
     }
 };
-
