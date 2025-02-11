@@ -1154,8 +1154,8 @@ footer .credit span{
 @supports (-webkit-touch-callout: none) {
 
 .form-container .radio-options input[type="radio"] {
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
 }
 
 .form-container .radio-options input[type="radio"]:checked:after {
@@ -1164,6 +1164,11 @@ footer .credit span{
 }
 
 .form-container .radio-options label {
-    padding: 10px 14px;
+    font-size: 6.5px;
+    padding: 4px 4px;
+}
+
+.additional-fields-toggle {
+    flex-direction: column;
 }
 }}};
