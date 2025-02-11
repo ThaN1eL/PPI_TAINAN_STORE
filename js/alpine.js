@@ -88,8 +88,8 @@ document.addEventListener('alpine:init', () => {
 document.addEventListener('alpine:init', () => {
     // Existing cart store remains the same
     Alpine.store('checkout', {
-        formType: '', // Track which form type is selected
-        showAdditionalFields: false, // Control additional fields visibility
+        formType: '', 
+        showAdditionalFields: false, 
 
         formatMessage(items, total, customerData) {
             const itemsList = items.map(item => 

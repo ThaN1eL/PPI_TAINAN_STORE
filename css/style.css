@@ -421,38 +421,43 @@ section:nth-child(2){
 
 /* Radio Container Styling */
 .form-container .radio-container {
-    margin: 15px 0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .form-container .radio-options {
     display: flex;
     align-items: center;
-    width: 100%;
-    gap: 10px;
-    padding: 5px 0;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
 }
 
 .form-container .radio-options span {
-    flex: 0 0 auto;
-    min-width: 80px;
-    margin-right: 10px;
-    text-align: left;
+    flex: 0 0 100%;
     color: var(--ruby);
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #eee;
 }
 
 .form-container .radio-options label {
     display: flex;
     align-items: center;
-    gap: 5px;
-    margin: 0;
-    font-size: 14px;
+    gap: 8px;
+    padding: 2px 5px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
     cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    color: #555;
 }
 
 /* Additional Fields Toggle */
@@ -460,13 +465,31 @@ section:nth-child(2){
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     margin-top: 15px;
     gap: 10px;
 }
 
 .additional-fields-toggle input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.form-container .radio-options input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.additional-fields-toggle label {
+    margin: 0;
+}
+
+.form-container .radio-options label:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
 }
 
 /* Checkout Button */
@@ -814,6 +837,7 @@ footer .credit span{
         font-size: 100%;
     }
 }
+
 /* tablet */
 @media (max-width: 768px) {
     html{
@@ -892,7 +916,6 @@ footer .credit span{
     object-fit: contain;
 }
 
-
 .modal-content span {
     display: flex;
     align-items: center;
@@ -913,7 +936,6 @@ footer .credit span{
     margin: 2% auto;
     padding: 1rem;
 }
-
 
 #shopping-cart-button .quantity-badge {
     padding: 1px 5px;
@@ -1059,6 +1081,23 @@ footer .credit span{
 #textBoxContainer {
     width:90%;
 }
+
+@media (max-width: 820px) {
+.form-container .radio-options input[type="radio"] {
+    margin-right: 1rem;
+    width: 10px;
+    height: 10px;
+}
+
+.form-container .radio-options label {
+    font-size: 6.5px;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+}
+
+}
+
 /* mobile */
 @media (max-width: 450px) {
     html{
@@ -1092,8 +1131,8 @@ footer .credit span{
 }
 
 .form-container .radio-options label {
-    font-size: 8px;
-    margin-right: 1rem;
+    font-size: 6.5px;
+    padding: 4px 4px;
 }
 
 .form-container .radio-options input[type="radio"] {
@@ -1103,7 +1142,6 @@ footer .credit span{
 }
 
 .additional-fields-toggle {
-    flex-direction: column;
     align-items:center;
 }
 
@@ -1111,19 +1149,21 @@ footer .credit span{
     margin-right: 2rem;
 }
 
+
 /* iOS Safari Specific Fixes */
 @supports (-webkit-touch-callout: none) {
 
-.form-container .radio-options {
-    gap: 8px;
-}
-    
 .form-container .radio-options input[type="radio"] {
-    margin: 0;
-    position: relative;
+    width: 20px;
+    height: 20px;
 }
-    
-.form-container .radio-container {
-    padding: 0 10px;
+
+.form-container .radio-options input[type="radio"]:checked:after {
+    width: 10px;
+    height: 10px;
+}
+
+.form-container .radio-options label {
+    padding: 10px 14px;
 }
 }}};
