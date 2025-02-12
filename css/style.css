@@ -70,6 +70,7 @@ body{
 
 .sliderCustom .list .item img {
     width: 100%;
+    border-radius: 5%;
 }
 
 @keyframes autoRun {
@@ -87,6 +88,7 @@ section {
 
 section:nth-child(2){
     background: #eee;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 
 
@@ -110,18 +112,17 @@ section:nth-child(2){
 
 /* Navbar */
 .navbar{
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem 7%;
     background: rgba(255,255,255,0.3);
     backdrop-filter: blur(20px);
-    position: fixed; 
+    position: fixed;
     top: 0;left:0;right: 0;
     z-index: 1000; 
     box-shadow: var(--box-shadow);
 }
-
 
 .navbar .navbar-logo {
     font-size: 2rem;
@@ -149,15 +150,6 @@ section:nth-child(2){
     background: #E0115F;
     letter-spacing: 0.1rem;
 }
-
-/*.navbar .navbar-nav a::after {
-    content: '';
-    display:block;
-    padding-bottom: 1rem;
-    border-bottom: 0.1rem solid var(--primary);
-    transform: scaleX(0);
-    transition: 0.4s linear;
-}*/
 
 .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.8);
@@ -477,8 +469,8 @@ section:nth-child(2){
 }
 
 .form-container .radio-options input[type="radio"] {
-    width: 18px;
-    height: 18px;
+    width: 13px;
+    height: 13px;
     margin: 0;
     cursor: pointer;
 }
@@ -516,7 +508,20 @@ section:nth-child(2){
     font-size: 2.6rem;
     margin-bottom: 3rem;
     color:var(--ruby);
+    font-family: Cursive, Lucida Handwriting;
+    animation-name: floating;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
 }
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    80%  { transform: translate(0, 15px); }
+    to   { transform: translate(0, -0px); }
+}
+
 
 .about h2 span,
 .products h2 span {
@@ -533,6 +538,8 @@ section:nth-child(2){
 
 .about .row .about-img img{
     width: 80%;
+    border-radius: 20%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .about .row .content {
@@ -549,7 +556,7 @@ section:nth-child(2){
 
 .about .row .content p span {
     color: red;
-    font-weight: bold;
+    font-weight: 450;
     font-size: 1.3rem;
 }
 
@@ -557,7 +564,7 @@ section:nth-child(2){
     color: black;
     margin-bottom: 0.8rem;
     font-size: 1.4rem;
-    font-weight: 350;
+    font-weight: 300;
     line-height: 1.8rem;
 }
 
@@ -582,7 +589,7 @@ section:nth-child(2){
 
 /* Pulse animation */ 
 .about .row .content .socials h3 {
-    animation: pulse-new 2.5s ease infinite;
+    animation: pulse-new 2s ease infinite;
     }
     
     @keyframes pulse-new{
@@ -781,8 +788,7 @@ footer .credit span{
     max-height: 25rem;
     width: 100%; 
     max-width: 400px; 
-    margin: 0; 
-    border-radius: 2rem;
+    margin: 0;
     object-fit: contain;
 }
 
@@ -1083,7 +1089,7 @@ footer .credit span{
 }
 
 /* mobile */
-@media (max-width: 450px) {
+@media (max-width: 700px) {
     html{
         font-size: 55%;
     }
@@ -1136,24 +1142,6 @@ footer .credit span{
 
 /* iOS Safari Specific Fixes */
 @supports (-webkit-touch-callout: none) {
-
-    .form-container .radio-options {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        width: 100%;
-        gap: 8px;
-    }
-    
-    .form-container .radio-options input[type="radio"] {
-        width: 12px;
-        height: 12px;
-    }
-    
-    .form-container .radio-options input[type="radio"]:checked:after {
-        width: 10px;
-        height: 10px;
-    }
-    
     .form-container .radio-options label {
         font-size: 6.5px;
         padding: 4px 4px;
@@ -1161,12 +1149,8 @@ footer .credit span{
         width: 100%;
     }
     
-    /* Additional fields toggle styling */
     .form-container .additional-fields-toggle {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 12px;
-        width: 100%;
+        flex-direction: column
     }
     
     .form-container .additional-fields-toggle label {
