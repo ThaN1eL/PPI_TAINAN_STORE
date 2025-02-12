@@ -537,9 +537,10 @@ section:nth-child(2){
 }
 
 .about .row .about-img img{
-    width: 80%;
+    width: 100%;
     border-radius: 20%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    height: auto;
 }
 
 .about .row .content {
@@ -1105,6 +1106,11 @@ footer .credit span{
     margin-left: 7rem;
 }
 
+.about .row .about-img img {
+    height: 100%;
+    object-fit: contain;
+    max-height: 500px;
+
 .form-container .form-fields label {
     margin: 0.5rem 0;
 }
@@ -1157,4 +1163,4 @@ footer .credit span{
         margin: 0;
         padding: 4px 0;
     }
-}}};
+}}}};
