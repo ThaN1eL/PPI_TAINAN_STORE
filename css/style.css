@@ -1133,4 +1133,12 @@ footer .credit span{
 .additional-fields-toggle label {
     margin-right: 2rem;
 }
-}};
+
+/* iOS Safari Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+    .additional-fields-toggle {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}}};
