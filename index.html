@@ -50,7 +50,6 @@
 
 <!-- Shopping Cart start -->
 <div class="shopping-cart">
-    <!-- Cart Items Template -->
     <template x-for="(item, index) in $store.cart.items" x-keys="index">
         <div class="cart-item">
             <img :src="`img/${item.img}`" :alt="item.name">
@@ -356,7 +355,6 @@
             <i data-feather="x"></i>
         </a>
         <div class="modal-content" x-show="selectedItem">
-            <!-- Dynamically load modal image depending on item group -->
             <img :src="`img/${selectedItem.modalImg || selectedItem.img}`" :alt="selectedItem.name">
             <div class="product-content">
                 <h3 x-text="selectedItem.name"></h3>

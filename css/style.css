@@ -451,10 +451,7 @@ section:nth-child(2){
 .additional-fields-toggle {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-    margin-top: 15px;
-    gap: 10px;
 }
 
 .additional-fields-toggle input[type="checkbox"] {
@@ -1131,12 +1128,6 @@ footer .credit span{
     width: 10px;
     height: 10px;
     size: 10px;
-}
-
-.additional-fields-toggle input{
-    justify-content: center;
-    align-items:center;
-    flex-direction: column;
 }
 
 .additional-fields-toggle label {
