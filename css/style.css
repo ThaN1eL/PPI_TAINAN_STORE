@@ -449,26 +449,15 @@ section:nth-child(2){
 }
 
 .additional-fields-toggle {
-    display: grid;
-    place-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .additional-fields-toggle input[type="checkbox"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    /* Set explicit dimensions */
     width: 15px;
     height: 15px;
-    /* Add a border to make it visible */
-    border: 1px solid #666;
-    border-radius: 3px;
-    /* Center the checkbox */
-    place-self: center;
-    margin: 0;
+    margin-right: 5px;
 }
 
 .form-container .radio-options input[type="radio"] {
@@ -479,13 +468,7 @@ section:nth-child(2){
 }
 
 .additional-fields-toggle label {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    text-align: center;
+    margin: 0;
 }
 
 .form-container .radio-options label:hover {
@@ -1147,25 +1130,12 @@ footer .credit span{
     size: 10px;
 }
 
-.additional-fields-toggle {
-    gap: 1rem;
+.additional-fields-toggle input[type="checkbox"] {
+    place-self: center;
 }
 
 .additional-fields-toggle label {
-    font-size: 1.2rem;
-    padding: 0.5rem;
-}
-
-.additional-fields-toggle input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-}
-
-.additional-fields-toggle input[type="checkbox"]:checked::after {
-    left: 6px;
-    top: 2px;
-    width: 6px;
-    height: 12px;
+    margin-right: 2rem;
 }
 
 }};
