@@ -449,11 +449,7 @@ section:nth-child(2){
 }
 
 .additional-fields-toggle {
-    display: grid;
     place-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.5rem;
 }
 
 .additional-fields-toggle input[type="checkbox"] {
@@ -1131,9 +1127,4 @@ footer .credit span{
     height: 10px;
     size: 10px;
 }
-
-.additional-fields-toggle label {
-    margin-right: 2rem;
-}
-
 }};
