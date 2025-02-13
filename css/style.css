@@ -1133,7 +1133,7 @@ footer .credit span{
     size: 10px;
 }
 
-.additional-fields-toggle {
+.additional-fields-toggle input{
     justify-content: center;
     align-items:center;
     flex-direction: column;
