@@ -126,7 +126,7 @@ section:nth-child(2){
 
 .navbar .navbar-logo {
     font-size: 2rem;
-    font-weight: 520;
+    font-weight: 500;
     color: #f00;
     font-style:italic;
     text-decoration: none;
@@ -557,7 +557,7 @@ section:nth-child(2){
 
 .about .row .content p span {
     color: red;
-    font-weight: 450;
+    font-weight: 400;
     font-size: 1.3rem;
 }
 
@@ -836,7 +836,7 @@ footer .credit span{
 /* laptop */
 @media (max-width: 1366px) {
     html{
-        font-size: 60%;
+        font-size: 100%;
     }
 }
 /* deskop */
@@ -894,7 +894,6 @@ footer .credit span{
  }
 
  .about .row .about-img img{
-    height:50rem;
     object-fit: cover;
     object-position: center;
  }
@@ -1150,19 +1149,7 @@ footer .credit span{
 
 /* iOS Safari Specific Fixes */
 @supports (-webkit-touch-callout: none) {
-    .form-container .radio-options label {
-        font-size: 6.5px;
-        padding: 4px 4px;
-        margin-bottom: 8px;
-        width: 100%;
-    }
-    
     .form-container .additional-fields-toggle {
         flex-direction: column
     }
-    
-    .form-container .additional-fields-toggle label {
-        margin: 0;
-        padding: 4px 0;
-    }
-}}}};
+}}};
