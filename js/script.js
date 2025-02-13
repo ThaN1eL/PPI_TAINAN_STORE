@@ -1,5 +1,4 @@
 // Toggle class active hamburger menu
-
 const navbarNav = document.querySelector(' .navbar-nav');
 
 // ketika humburger menu di click

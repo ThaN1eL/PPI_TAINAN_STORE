@@ -80,7 +80,7 @@ document.addEventListener('alpine:init', () => {
     });
     // Re-initialize Feather icons after Alpine has rendered the content
     Alpine.nextTick(() => {
-        feather.replace();  // This will replace the <i data-feather> with the correct SVG icons
+        feather.replace(); // This will replace the <i data-feather> with the correct SVG icons
     });
 });
 
@@ -99,34 +99,33 @@ document.addEventListener('alpine:init', () => {
             let customerInfo = '';
             if (customerData.formType === 'simcard') {
                 customerInfo = `
-*SIM Card Format*
-Nama (sesuai passport): ${customerData.simcard_name}
-Nama universitas: ${customerData.simcard_university}
-Nomor passport: ${customerData.simcard_passport}
-Tanggal lahir: ${customerData.simcard_birthdate}
-No. Telp Indo: ${customerData.simcard_phone}
-Tanggal kedatangan: ${customerData.simcard_arrival}`;
+                    *SIM Card Format*
+                    Nama (sesuai passport): ${customerData.simcard_name}
+                    Nama universitas: ${customerData.simcard_university}
+                    Nomor passport: ${customerData.simcard_passport}
+                    Tanggal lahir: ${customerData.simcard_birthdate}
+                    No. Telp Indo: ${customerData.simcard_phone}
+                    Tanggal kedatangan: ${customerData.simcard_arrival}`;
             } else if (customerData.formType === 'other') {
                 customerInfo = `
-*Other Format*
-Nama: ${customerData.other_name}
-Nomor telp: ${customerData.other_phone}
-Email: ${customerData.other_email}
-Tanggal kedatangan: ${customerData.other_arrival}
-Jenis kelamin: ${customerData.other_gender}
-Alamat Dorm: ${customerData.other_address}
-Warna Masker/Bed: ${customerData.other_color}`;
+                    *Other Format*
+                    Nama: ${customerData.other_name}
+                    Nomor telp: ${customerData.other_phone}
+                    Email: ${customerData.other_email}
+                    Tanggal kedatangan: ${customerData.other_arrival}
+                    Jenis kelamin: ${customerData.other_gender}
+                    Alamat Dorm: ${customerData.other_address}
+                    Warna Masker/Bed: ${customerData.other_color}`;
 
                 // Include additional fields if selected
                 if (customerData.showAdditionalFields) {
                     customerInfo += `
-*Informasi Tambahan*
-Nomor passport: ${customerData.other_passport}
-Tanggal lahir: ${customerData.other_birthdate}
-Nama universitas: ${customerData.other_university}`;
+                    *Informasi Tambahan*
+                    Nomor passport: ${customerData.other_passport}
+                    Tanggal lahir: ${customerData.other_birthdate}
+                    Nama universitas: ${customerData.other_university}`;
                 }
             }
-
             return `*Order Details*
 ${customerInfo}
 

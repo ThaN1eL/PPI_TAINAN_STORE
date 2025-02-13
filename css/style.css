@@ -236,7 +236,7 @@ section:nth-child(2){
 /* Shopping Cart */
 #shopping-cart-button {
     position: relative;
-    color: black;
+    color: var(--primary);
 }
 
 #shopping-cart-button:hover {
@@ -248,7 +248,7 @@ section:nth-child(2){
     padding: 1px 5px;
     background-color: red;
     border-radius: 6px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     position: absolute;
     top: 0;
     right: -10px;
@@ -280,7 +280,7 @@ section:nth-child(2){
   }
   
   .shopping-cart::-webkit-scrollbar {
-    width: 14px;/* Sets the width of the scrollbar */
+    width: 14px;
   }
   
   .shopping-cart::-webkit-scrollbar-track {
@@ -351,7 +351,6 @@ section:nth-child(2){
     color: var(--ruby);
 }
 
-/* Checkout Form */
 .form-container {
     width: 100%;
     display: flex;
@@ -373,14 +372,12 @@ section:nth-child(2){
     text-align: center;
 }
 
-/* Form Section Layout */
 .form-section {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Form Fields Styling */
 .form-container .form-fields {
     display: flex;
     flex-direction: column;
@@ -411,7 +408,6 @@ section:nth-child(2){
     background-color: #ddd;
 }
 
-/* Radio Container Styling */
 .form-container .radio-container {
     margin: 20px 0;
     padding: 15px;
@@ -452,7 +448,6 @@ section:nth-child(2){
     color: #555;
 }
 
-/* Additional Fields Toggle */
 .additional-fields-toggle {
     display: flex;
     align-items: center;
@@ -1140,10 +1135,10 @@ footer .credit span{
 
 .additional-fields-toggle {
     align-items:center;
+    flex-direction: column;
 }
 
 .additional-fields-toggle label {
     margin-right: 2rem;
 }
-
 }};
