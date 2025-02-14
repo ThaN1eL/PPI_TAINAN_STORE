@@ -1164,6 +1164,7 @@ footer .credit span{
 .additional-fields-toggle {
     flex-direction: column;
     gap: 4px;
+    margin-left: 5rem;
 }
 
 .additional-fields-toggle input[type="checkbox"] {
