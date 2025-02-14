@@ -127,13 +127,13 @@ section:nth-child(2){
 .navbar .navbar-logo {
     font-size: 2rem;
     font-weight: 500;
-    color: #f00;
+    color:#353839;
     font-style:italic;
     text-decoration: none;
 }
 
 .navbar .navbar-logo span{
-    color: #98fbcb;
+    color:var(--ruby);
 }
 
 .navbar .navbar-nav a {
@@ -1184,7 +1184,6 @@ footer .credit span{
     
     .additional-fields-toggle input[type="checkbox"] {
         margin: 0;
-        /* Force hardware acceleration */
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
     }
