@@ -448,16 +448,6 @@ section:nth-child(2){
     color: #555;
 }
 
-.additional-fields-toggle {
-    place-items: center;
-}
-
-.additional-fields-toggle input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    margin-right: 5px;
-}
-
 .form-container .radio-options input[type="radio"] {
     width: 13px;
     height: 13px;
@@ -465,13 +455,55 @@ section:nth-child(2){
     cursor: pointer;
 }
 
-.additional-fields-toggle label {
-    margin: 0;
-}
-
 .form-container .radio-options label:hover {
     background-color: #f0f0f0;
     border-color: #ccc;
+}
+
+.additional-fields-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.additional-fields-toggle input[type="checkbox"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid var(--ruby);
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+}
+
+.additional-fields-toggle input[type="checkbox"]:checked {
+    background-color: var(--ruby);
+}
+
+.additional-fields-toggle input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+}
+
+.additional-fields-toggle label {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--ruby);
+    cursor: pointer;
 }
 
 /* Checkout Button */
@@ -823,14 +855,15 @@ footer .credit span{
 
 
 /* Media Queries */
-/* laptop */
-@media (max-width: 1366px) {
+/* deskop */
+@media (max-width: 1920px) {
     html{
         font-size: 100%;
     }
 }
-/* deskop */
-@media (max-width: 1920px) {
+
+/* laptop */
+@media (max-width: 1366px) {
     html{
         font-size: 100%;
     }
@@ -1126,5 +1159,33 @@ footer .credit span{
     width: 10px;
     height: 10px;
     size: 10px;
+}
+
+.additional-fields-toggle {
+    flex-direction: column;
+    gap: 4px;
+}
+
+.additional-fields-toggle input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.additional-fields-toggle label {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .additional-fields-toggle {
+        padding: 12px;
+    }
+    
+    .additional-fields-toggle input[type="checkbox"] {
+        margin: 0;
+        /* Force hardware acceleration */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
 }
 }};
