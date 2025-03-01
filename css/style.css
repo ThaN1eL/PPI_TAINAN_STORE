@@ -533,7 +533,7 @@ section:nth-child(2){
     font-family: Cursive, Lucida Handwriting;
     animation-name: floating;
     animation-duration: 2.5s;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
     margin-left: 30px;
     margin-top: 5px;
