@@ -17,7 +17,7 @@ document.addEventListener('alpine:init', () => {
             { id: 12, name: 'FET 360 Hari', img: 'FET.png', price: 3850, description: '360 Hari Unlimited Internet, 570GB/Bulan <br>(Penurunan kecepatan hingga 10Mbps setelah melewati batas kuota), <br>Pulsa telepon 600NTD(berlaku 60 hari setelah pengaktifan kartu) <br>Catatan: <br>1. Sebelum internet habis bisa diperpanjang kuotanya.<br> 2.Pembelian pulsa telepon dapat dipakai selama 180 hari.<br><br>Notes:<br>➢Usia Minimal 18 tahun untuk pemegang Passport China, Hong Kong, Filipina, Indonesia, Vietnam, Thailand dan Malaysia. Selain negara-negara yang telah disebutkan, batas Usia minimal 20 tahun<br>➢Perusahan provider kartu telepon menetapkan peraturan pemohon wajib untuk memberikan passport dan visa sebagai syarat pengaktifan kartu telepon, Tanda tangan pemohon di formulir pendaftaran dan surat persetujuan yang harus dikirimkan Kembali ke perusahaan. Pelamar harus mengambil foto sambal memegang "Kartu Telepon" dengan nomor di atasnya untuk membuktikan bahwa kartu telepon tersebut untuk digunakan sendiri. Kartu telepon prabayar hanya dapat digunakan oleh pemohon,dilarang digunakan untuk hal yang melanggar hukum  dan juga diperjual belikan.<br><br>(Bila ada yang tidak paham / ada yang perlu ditanyakan, Bisa Hubungi Admin.)' },
             { id: 13, name: 'Taiwan Mobile 180 Hari', img: 'OK.png', price: 2200, description: '180 Hari Unlimited Internet.<br> Catatan: <br>1. Sebelum internet habis bisa diperpanjang kuotanya.<br>2.Pembelian pulsa telepon dapat dipakai selama 180 hari.<br><br>Notes:<br>➢Usia Minimal 18 tahun untuk pemegang Passport China, Hong Kong, Filipina, Indonesia, Vietnam, Thailand dan Malaysia. Selain negara-negara yang telah disebutkan, batas Usia minimal 20 tahun<br>➢Perusahan provider kartu telepon menetapkan peraturan pemohon wajib untuk memberikan passport dan visa sebagai syarat pengaktifan kartu telepon, Tanda tangan pemohon di formulir pendaftaran dan surat persetujuan yang harus dikirimkan Kembali ke perusahaan. Pelamar harus mengambil foto sambal memegang "Kartu Telepon" dengan nomor di atasnya untuk membuktikan bahwa kartu telepon tersebut untuk digunakan sendiri. Kartu telepon prabayar hanya dapat digunakan oleh pemohon,dilarang digunakan untuk hal yang melanggar hukum  dan juga diperjual belikan.<br><br>(Bila ada yang tidak paham / ada yang perlu ditanyakan, Bisa Hubungi Admin.)' },
             { id: 14, name: 'Taiwan Mobile 360 Hari', img: 'OK.png', price: 4200, description: '360 Hari Unlimited Internet, Pulsa Telepon 300NTD. <br>Catatan: <br>1. Sebelum internet habis bisa diperpanjang kuotanya. <br>2.Pembelian pulsa telepon dapat dipakai selama 180 hari.<br><br>Notes:<br>➢Usia Minimal 18 tahun untuk pemegang Passport China, Hong Kong, Filipina, Indonesia, Vietnam, Thailand dan Malaysia. Selain negara-negara yang telah disebutkan, batas Usia minimal 20 tahun<br>➢Perusahan provider kartu telepon menetapkan peraturan pemohon wajib untuk memberikan passport dan visa sebagai syarat pengaktifan kartu telepon, Tanda tangan pemohon di formulir pendaftaran dan surat persetujuan yang harus dikirimkan Kembali ke perusahaan. Pelamar harus mengambil foto sambal memegang "Kartu Telepon" dengan nomor di atasnya untuk membuktikan bahwa kartu telepon tersebut untuk digunakan sendiri. Kartu telepon prabayar hanya dapat digunakan oleh pemohon,dilarang digunakan untuk hal yang melanggar hukum  dan juga diperjual belikan.<br><br>(Bila ada yang tidak paham / ada yang perlu ditanyakan, Bisa Hubungi Admin.)' }
-        ]
+        ],
     }));
 
     Alpine.store('cart', {
@@ -191,3 +191,29 @@ ${itemsList}
       minimumFractionDigits: 0,
     }).format(number);
   };
+
+document.addEventListener('alpine:init', () => {
+    Alpine.data('productFilter', () => ({
+        activeFilter: 'all',
+        groups: [
+            { name: 'Bed & Comfort', category: 'bed', items: [1, 2, 3, 4] },
+            { name: 'Tech & Communication', category: 'tech', items: [11, 12, 13, 14] },
+            { name: 'Daily Essentials', category: 'daily', items: [5, 6, 7, 8, 9, 10] }
+        ],
+        
+        setFilter(filter) {
+            this.activeFilter = filter;
+        },
+        
+        isVisible(item) {
+            if (this.activeFilter === 'all') return true;
+            
+            const matchingGroup = this.groups.find(group => 
+                group.category === this.activeFilter && 
+                group.items.includes(item.id)
+            );
+            
+            return !!matchingGroup;
+        }
+    }));
+});
