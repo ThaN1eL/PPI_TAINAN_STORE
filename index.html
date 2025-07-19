@@ -58,7 +58,7 @@
                 <h3 x-text="item.name"></h3>
                 <div class="item-price">
                     <span x-text="USD(item.price)"></span> &times;
-                    <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                    <button id="remove" @click="$store.cart.remove(item.uniqueId || item.id)">&minus;</button>
                     <span x-text="item.quantity"></span>
                     <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
                     <span x-text="USD(item.total)"></span>
@@ -197,10 +197,10 @@
 
             <div class="swiper-slide slide">
                 <div class="content">
-                    <span> Best Deals !</span>
-                    <h3>Paket Nyaman Tidur Nyenyak</h3>
-                    <p>Price: $3980<br><br>Dengan membeli Paket Nyaman Tidur Nyenyak Kamu sudah bisa lansung mendapatkan 1pc EzCozy special Laundry Bag</p>
-                    <a href="#" class="btn bed-order-btn">Order NOW</a>
+                    <span>EzCozy Special Deals!</span>
+                    <p> ➢ Mendapatkan 2 Tas untuk setiap pembelian Paket A/B/C</p>
+                    <p> ➢ Dengan pembelian minimal $3900/$6900, GRATIS Laundry Bag/ Cooling Blanket Eksklusif EzCozy!</p>
+                    <a href="#products" class="btn bed-order-btn">Order NOW</a>
                 </div>
                 <div class="image">
                     <img src="img/packB.png" alt="">
@@ -358,10 +358,55 @@
             <div class="product-content">
                 <h3 x-text="selectedItem.name"></h3>
                 <p x-html="selectedItem.description"></p>
-                <div class="product-price">
-                    <span x-text="USD(selectedItem.price)"></span>
+                
+                <!-- ADD-ONS SECTION -->
+                <div x-show="selectedItem.addons && selectedItem.addons.length > 0" class="addons-section">
+                    <h4 style="color: #233142; margin: 1rem 0;">Tambahan Optional:</h4>
+                    <template x-for="addon in selectedItem.addons" :key="addon.id">
+                        <div class="addon-item">
+                            <label class="addon-checkbox">
+                                <!-- Radio button ID 19 & 20 -->
+                                <input x-show="selectedItem.id === 19 || selectedItem.id === 20"
+                                       type="radio" 
+                                       :name="`addon_${selectedItem.id}`"
+                                       :checked="$store.modal.selectedAddons[selectedItem.id] && $store.modal.selectedAddons[selectedItem.id][addon.id]"
+                                       @change="$store.modal.toggleAddon(selectedItem.id, addon.id)">
+                                
+                                <!-- Checkbox for other products -->
+                                <input x-show="selectedItem.id !== 19 && selectedItem.id !== 20"
+                                       type="checkbox" 
+                                       :checked="$store.modal.selectedAddons[selectedItem.id] && $store.modal.selectedAddons[selectedItem.id][addon.id]"
+                                       @change="$store.modal.toggleAddon(selectedItem.id, addon.id)">
+                                
+                                <!-- ADD-ON IMAGE -->
+                                <div class="addon-image" x-show="addon.image">
+                                    <img :src="`img/${addon.image}`" :alt="addon.name">
+                                </div>
+                                
+                                <div class="addon-details">
+                                    <div class="addon-header">
+                                        <span class="addon-name" x-text="addon.name"></span>
+                                        <span class="addon-price" x-text="`+${USD(addon.price)}`"></span>
+                                    </div>
+                                    <div class="addon-description" x-html="addon.description"></div>
+                                </div>
+                            </label>
+                        </div>
+                    </template>
                 </div>
-                <a href="#" @click.prevent="$store.cart.add(selectedItem)">
+                
+                <!-- PRICE SECTION -->
+                <div class="product-price">
+                    <span class="base-price" x-show="selectedItem.addons && selectedItem.addons.length > 0">
+                        Base:<span x-text="USD(selectedItem.price)"></span>
+                    </span>
+                     <span class="total-price">
+                        Total:<br><span x-text="USD($store.modal.getTotalPrice())"></span>
+                    </span>
+                </div>
+                
+                <!-- ADD TO CART BUTTON -->
+                <a href="#" @click.prevent="$store.cart.add($store.modal.getItemWithAddons())">
                     <i data-feather="shopping-cart"></i><span>Add to Cart</span>
                 </a>
             </div>

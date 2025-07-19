@@ -1,7 +1,6 @@
 // Toggle class active hamburger menu
 const navbarNav = document.querySelector(' .navbar-nav');
 
-// ketika humburger menu di click
 document.querySelector('#hamburger-menu').
 onclick = (e) => {
 navbarNav.classList.toggle('active');
@@ -24,12 +23,10 @@ document.addEventListener('click', function (e) {
     const sc = document.querySelector('#shopping-cart-button');
     const shoppingCart = document.querySelector('.shopping-cart');
     
-    // Close navbar if clicked outside
     if (!hm.contains(e.target) && !navbarNav.contains(e.target)) {
         navbarNav.classList.remove('active');
     }
 
-    // Close shopping cart if clicked outside
     if (!sc.contains(e.target) && !shoppingCart.contains(e.target)) {
         shoppingCart.classList.remove('active');
     }
@@ -37,7 +34,6 @@ document.addEventListener('click', function (e) {
 
 
 //Modal Box
-// Click outside to close modal
 window.onclick = (e) => {
     const modal = document.querySelector('#item-detail-modal');
     if (e.target === modal) {
@@ -71,22 +67,22 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     //BedOrderNow
-    if (bedOrderBtn) {
-        bedOrderBtn.addEventListener('click', function(e) {
-          e.preventDefault();
+    // if (bedOrderBtn) {
+    //     bedOrderBtn.addEventListener('click', function(e) {
+    //       e.preventDefault();
           
-          const bedProduct = { 
-            id: 2,
-            name: 'Paket Nyaman Tidur Nyenyak (6 items)',
-            img: 'packet2.png',modalImg: 'packetB.png',
-            price: 3980,
-            description: '1. Kasur Elastis Tinggi yang Lembut dan Tebal<br>2. Bantal Bersikulasi Tinggi<br>3. Selimut Musim Dingin Bahan Graphene<br>4. Sarung Bantal Model Amplop<br>5. Seprai yang bisa dicuci<br>6. Selimut Tipis Multifungsi<br><br>NOTICE!<br>➢Keras lembutnya Kasur hanya untuk referensi saja, tidak mewakili perasaan pribadi anda.<br>➢ Warna produk bisa saja tidak sama, silahkan merujuk pada produk yang sebenarnya.<br>➢Free ongkir untuk didalam pulau Taiwan, Untuk diluar pulau Taiwan akan dikenakan Biaya.<br><br>Bonus Pembelian ezCozy Item:<br>➢Pembelian $3900 atau lebih, Gratis 1pc Laundry Bag untuk perlengkapan tidur<br>➢Pembelian $6000 atau lebih, Gratis 1pc penyimpanan gantung samping tempat tidur<br>Note: Hadiah diatas dapat diakumulasikan.'
-         };
+    //       const bedProduct = { 
+    //         id: 2,
+    //         name: 'Paket Nyaman Tidur Nyenyak (6 items)',
+    //         img: 'packet2.png',modalImg: 'packetB.png',
+    //         price: 3980,
+    //         description: '1. Kasur Elastis Tinggi yang Lembut dan Tebal<br>2. Bantal Bersikulasi Tinggi<br>3. Selimut Musim Dingin Bahan Graphene<br>4. Sarung Bantal Model Amplop<br>5. Seprai yang bisa dicuci<br>6. Selimut Tipis Multifungsi<br><br>NOTICE!<br>➢Keras lembutnya Kasur hanya untuk referensi saja, tidak mewakili perasaan pribadi anda.<br>➢ Warna produk bisa saja tidak sama, silahkan merujuk pada produk yang sebenarnya.<br>➢Free ongkir untuk didalam pulau Taiwan, Untuk diluar pulau Taiwan akan dikenakan Biaya.<br><br>Bonus Pembelian ezCozy Item:<br>➢Pembelian $3900 atau lebih, Gratis 1pc Laundry Bag untuk perlengkapan tidur<br>➢Pembelian $6000 atau lebih, Gratis 1pc penyimpanan gantung samping tempat tidur<br>Note: Hadiah diatas dapat diakumulasikan.'
+    //      };
           
-          // Open the modal
-          Alpine.store('modal').open(bedProduct);
-        });
-    }
+    //       // Open the modal
+    //       Alpine.store('modal').open(bedProduct);
+    //     });
+    // }
 
     //FetOrderNow
     if (fetOrderBtn) {

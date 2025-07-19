@@ -812,9 +812,8 @@ footer .credit span{
 
 .modal-content .product-price {
     font-size: 1.5rem;
-    color:greenyellow;
+    color:#141010;
     font-weight: 700;
-    text-align: center;
 }
 
 .modal-content p {
@@ -847,6 +846,143 @@ footer .credit span{
     transition: all 0.3s ease;
 }
 
+/* ADD-ONS STYLING WITH IMAGES */
+.addons-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(224, 17, 95, 0.3);
+}
+
+.addon-item {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.addon-item:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: rgba(224, 17, 95, 0.5);
+}
+
+.addon-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.addon-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 2px 0 0 0;
+    cursor: pointer;
+    accent-color: #E0115F;
+    flex-shrink: 0;
+}
+
+/* ADD-ON IMAGE STYLING */
+.addon-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid rgba(224, 17, 95, 0.3);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.addon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.addon-item:hover .addon-image img {
+    transform: scale(1.05);
+}
+
+.addon-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.addon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+}
+
+.addon-name {
+    font-weight: 600;
+    color: #233142;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+.addon-price {
+    font-weight: bold;
+    color: #222831;
+    font-size: 1rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.addon-description {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.4;
+    margin-top: 0.3rem;
+}
+
+.product-price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.base-price {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.total-price {
+    font-size: 1.8rem;
+    color: #141010;
+    font-weight: 700;
+    text-align: center;
+}
+
+.addon-checkbox input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 2px 0 0 0;
+    cursor: pointer;
+    accent-color: #E0115F;
+    flex-shrink: 0;
+}
+
+.addon-item .addon-checkbox input[type="radio"]:checked + .addon-image {
+    border-color: #E0115F;
+    box-shadow: 0 0 10px rgba(224, 17, 95, 0.5);
+}
+
+.addon-item .addon-checkbox input[type="radio"]:checked + .addon-image + .addon-details .addon-name {
+    color: #E0115F;
+    font-weight: bold;
+}
 
 /* Media Queries */
 /* deskop */
@@ -1045,6 +1181,35 @@ footer .credit span{
     width: 100%;
 }
 
+/* Responsive Design for Add-ons */
+.addon-checkbox {
+    flex-direction: column;
+    gap: 8px;
+}
+
+.addon-image {
+    width: 60px;
+    height: 60px;
+    align-self: center;
+}
+
+.addon-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+}
+
+.addon-name {
+    font-size: 1rem;
+}
+
+.addon-price {
+    font-size: 0.9rem;
+}
+
+.addon-description {
+    font-size: 0.8rem;
+}
 
 .swiper-pagination {
     margin-bottom: -1rem;
@@ -1171,6 +1336,39 @@ footer .credit span{
     font-size: 0.9rem;
 }
 
+/* Mobile Add-ons Styling */
+.addon-checkbox {
+    gap: 6px;
+}
+
+.addon-image {
+    width: 50px;
+    height: 50px;
+}
+
+.addon-item {
+    padding: 0.6rem;
+    margin: 0.8rem 0;
+}
+
+.addon-name {
+    font-size: 0.9rem;
+}
+
+.addon-price {
+    font-size: 0.8rem;
+}
+
+.addon-description {
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
+
+.addon-checkbox input[type="radio"] {
+        width: 14px;
+        height: 14px;
+}
+
 @supports (-webkit-touch-callout: none) {
     .additional-fields-toggle {
         padding: 12px;
@@ -1182,4 +1380,4 @@ footer .credit span{
         transform: translateZ(0);
     }
 }
-}};
+}}
