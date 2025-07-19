@@ -46,26 +46,77 @@ window.onclick = (e) => {
 document.addEventListener('DOMContentLoaded', function() {
     
     const maskPackOrderBtn = document.querySelector('.mask-pack-order-btn');
-    const bedOrderBtn = document.querySelector('.bed-order-btn');
+    // const bedOrderBtn = document.querySelector('.bed-order-btn');
     const fetOrderBtn = document.querySelector('.fet-order-btn');
     
-    //MaskOrderNow
     if (maskPackOrderBtn) {
       maskPackOrderBtn.addEventListener('click', function(e) {
         e.preventDefault();
         
-        const maskProduct = {
-            id: 9,
-            name: 'Masker Pack',
+        const maskProduct = { 
+            id: 19, 
+            name: 'Masker Pack', 
             img: 'mask.png',
-            price: 55,
-            description: 'Isi perPack: 50pcs<br><br>Warna:<br>➢White<br>➢Black<br>➢Gray<br>➢Blue<br>➢Peach<br>➢Beige'
+            modalImg: 'mask.png', 
+            price: 55, 
+            description: '',
+            addons: [
+                {
+                    id: 'White',
+                    name: 'White',
+                    price: 0,
+                    image: 'white.png',
+                    description: 'Pilih Salah satu warna',
+                    selected: false
+                },
+                {
+                    id: 'Black',
+                    name: 'Black',
+                    price: 0,
+                    image: 'black.png',
+                    description: 'Pilih Salah satu warna',
+                    selected: false
+                },
+                {
+                    id: 'Gray',
+                    name: 'Gray',
+                    price: 0,
+                    image: 'gray.png',
+                    description: 'Pilih Salah satu warna',
+                    selected: false
+                }, 
+                {
+                    id: 'Blue',
+                    name: 'Blue',
+                    price: 0,
+                    image: 'blue.png',
+                    description: 'Pilih Salah satu warna',
+                    selected: false
+                },
+                {
+                    id: 'Peach',
+                    name: 'Peach',
+                    price: 0,
+                    image: 'peach.png',
+                    description: 'Pilih Salah satu warna',
+                    selected: false
+                }, 
+                {
+                    id: 'Beige',
+                    name: 'Beige',
+                    price: 0,
+                    image: 'beige.png',
+                    description: 'Pilih Salah satu warna',
+                    selected: false
+                }, 
+            ]
         };
         
         // Open the modal
         Alpine.store('modal').open(maskProduct);
       });
     }
+
     //BedOrderNow
     // if (bedOrderBtn) {
     //     bedOrderBtn.addEventListener('click', function(e) {
@@ -84,13 +135,14 @@ document.addEventListener('DOMContentLoaded', function() {
     //     });
     // }
 
+
     //FetOrderNow
     if (fetOrderBtn) {
         fetOrderBtn.addEventListener('click', function(e){
             e.preventDefault();
 
             const fetProduct = {
-                id: 12,
+                id: 22,
                 name: 'FET 360 Hari',
                 img: 'FET.png',
                 price: 3850,
